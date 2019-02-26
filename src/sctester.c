@@ -1,9 +1,9 @@
 #include<stdio.h>
 #include<string.h>
 
-unsigned char code[] = "";
+unsigned char code[] = "{SHELLCODEGOESHERE}";
 
-main(){
+int main(){
   printf("Shellcode Length:  %d\n", strlen(code));
   int (*ret)() = (int(*)())code;
   ret();

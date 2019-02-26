@@ -1,3 +1,3 @@
-main() {
+int main() {
 	return 8;
 }
