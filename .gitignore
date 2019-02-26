@@ -7,3 +7,4 @@ asm3
 shellcode
 bin/
 .*.sw*
+*.tar.gz

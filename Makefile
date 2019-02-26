@@ -31,5 +31,8 @@ clean:
 shellcode:
 	gcc -O0 -fpic src/sctester.c -o $(BINPATH)/sc1
 
+package: c asm shellcode
+	tar cvzf shellcoding-riscv.tar.gz $(BINPATH)/*
+
 .PHONY:
-	all clean asm c
+	all clean asm shellcode package c

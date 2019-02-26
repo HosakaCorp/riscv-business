@@ -14,3 +14,5 @@ Supporting/Helpful Documents
 - [RISC-V Green Card](https://www.cl.cam.ac.uk/teaching/1617/ECAD+Arch/files/docs/RISCVGreenCardv8-20151013.pdf)
 - [RISC-V User-Level ISA](https://content.riscv.org/wp-content/uploads/2017/05/riscv-spec-v2.2.pdf)
 - [Linux RISC-V Kernel](https://github.com/torvalds/linux/tree/master/arch/riscv)
+- [Linux Architecture Specific syscall(2) Info](http://man7.org/linux/man-pages/man2/syscall.2.html#NOTES)
+- [Fedora RISC-V Images](https://fedoraproject.org/wiki/Architectures/RISC-V/Installing)
