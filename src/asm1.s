@@ -1,18 +1,9 @@
 .section .text
 .globl _start
 _start:
-	    li a0,0x0
-	    li a2,13
-	    lui a1,       %hi(msg)       # load msg(hi)
-	    addi a1, a1,  %lo(msg)       # load msg(lo)
-	    li a7, 64 #64 is the __NR_write syscall 
-	    ecall
-	    li a0, 0x7
-	    li a7, 93
-	    ecall
-	    #ret
-#2:	    j 2b
-
-.section .rodata
-msg:
-	    .string "Hello World\n\0"
+	# This first example is a simple system call that triggers is an exit(7).
+	# Based on the documentation in syscall(2) - a7 will hold the exit syscall and a0 will be the initial first argument and will also hold the return value from the syscall after execution
+	# ecall is the replacement for scall that might be seen in earlier versions of the RISC-V ISA
+	li a0, 0x7	# set the first exit(2) argument to 7
+	li a7, 93	# 93 is the __NR_exit syscall
+	ecall		# trigger system call
