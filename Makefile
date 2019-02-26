@@ -1,16 +1,16 @@
-OBJ =\
-       asm1.o\
-       asm2.o
-BIN =\
-     simple1\
-     simple2\
-     simple3\
-     asm1\
-     asm2\
-     asm3\
-     sc1
-
 BINPATH = bin
+
+OBJ =\
+       $(BINPATH)/asm1.o\
+       $(BINPATH)/asm2.o
+BIN =\
+     $(BINPATH)/simple1\
+     $(BINPATH)/simple2\
+     $(BINPATH)/simple3\
+     $(BINPATH)/asm1\
+     $(BINPATH)/asm2\
+     $(BINPATH)/asm3\
+     $(BINPATH)/sc1
 
 all: c asm shellcode
 
@@ -26,7 +26,7 @@ asm:
 	ld $(BINPATH)/asm2.o -o $(BINPATH)/asm2 
 
 clean:
-	rm -f $(BINPATH)/$(OBJ) $(BINPATH)/$(BIN)
+	rm -f $(OBJ) $(BIN)
 
 shellcode:
 	gcc -O0 -fpic src/sctester.c -o $(BINPATH)/sc1
