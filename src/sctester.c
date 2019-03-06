@@ -3,9 +3,7 @@
 
 #ifdef SC1
 #include "sc1.h"
-#endif
-
-#ifdef SC2
+#elif SC2
 #include "sc2.h"
 #endif
 
