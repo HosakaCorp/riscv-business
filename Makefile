@@ -11,7 +11,10 @@ BIN =\
      $(BINPATH)/asm2\
      $(BINPATH)/asm3\
      $(BINPATH)/asm4\
-     $(BINPATH)/sc1
+     $(BINPATH)/asm5\
+     $(BINPATH)/asm6\
+     $(BINPATH)/sc1\
+     $(BINPATH)/sc2
 
 JNK =\
      shellcoding-riscv.tar.gz
@@ -32,12 +35,17 @@ asm:
 	ld $(BINPATH)/asm3.o -o $(BINPATH)/asm3 
 	gcc -c src/asm4.s -o $(BINPATH)/asm4.o
 	ld $(BINPATH)/asm4.o -o $(BINPATH)/asm4 
+	gcc -c src/asm5.s -o $(BINPATH)/asm5.o
+	ld $(BINPATH)/asm5.o -o $(BINPATH)/asm5 
+	gcc -c src/asm6.s -o $(BINPATH)/asm6.o
+	ld $(BINPATH)/asm6.o -o $(BINPATH)/asm6 
 
 clean:
 	rm -f $(OBJ) $(BIN) $(JNK)
 
 shellcode:
-	gcc -O0 -fpic src/sctester.c -o $(BINPATH)/sc1
+	gcc -O0 -DSC1 -fno-stack-protector -z execstack -no-pie src/sctester.c -o $(BINPATH)/sc1
+	gcc -O0 -DSC2 -fno-stack-protector -z execstack -no-pie src/sctester.c -o $(BINPATH)/sc2
 
 package: c asm shellcode
 	tar cvzf shellcoding-riscv.tar.gz $(BINPATH)/*

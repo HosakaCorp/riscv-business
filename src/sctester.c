@@ -1,7 +1,13 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <string.h>
 
-unsigned char code[] = "{SHELLCODEGOESHERE}";
+#ifdef SC1
+#include "sc1.h"
+#endif
+
+#ifdef SC2
+#include "sc2.h"
+#endif
 
 int main(){
   printf("Shellcode Length:  %d\n", strlen(code));
