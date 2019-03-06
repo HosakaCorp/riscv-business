@@ -10,6 +10,7 @@ BIN =\
      $(BINPATH)/asm1\
      $(BINPATH)/asm2\
      $(BINPATH)/asm3\
+     $(BINPATH)/asm4\
      $(BINPATH)/sc1
 
 JNK =\
@@ -29,6 +30,8 @@ asm:
 	ld $(BINPATH)/asm2.o -o $(BINPATH)/asm2 
 	gcc -c src/asm3.s -o $(BINPATH)/asm3.o
 	ld $(BINPATH)/asm3.o -o $(BINPATH)/asm3 
+	gcc -c src/asm4.s -o $(BINPATH)/asm4.o
+	ld $(BINPATH)/asm4.o -o $(BINPATH)/asm4 
 
 clean:
 	rm -f $(OBJ) $(BIN) $(JNK)
