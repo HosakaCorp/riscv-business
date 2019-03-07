@@ -1,6 +1,7 @@
 .section .text
 .globl _start
 _start:
+	    #execve
 	    li a0,0x6e69622f #nib/
 	    addi sp,sp,-8
 	    sd a0,0(sp)

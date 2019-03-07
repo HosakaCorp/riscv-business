@@ -26,7 +26,7 @@ read in the following manner or as described in the coming blogpost:
 | `sc1.h`, `asm5.s` | Learn about the pitfalls of shellcode and use a simple shellcode tester to check for null chars |
 | `sc2.h`, `asm6.s` | Discover more pitfalls, solutions, and port the more advanced shell exec shellcode |
 | `asm7.s` | Create a reverse shell in assembly |
-| `asm8.s`, `sc3.h` | Port the reverse shell to shellcode |
+| `asm8.s`, `sc3.h` | Porting the reverse shell to shellcode |
 
 Usage / Building
 ----------------

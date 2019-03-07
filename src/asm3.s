@@ -1,7 +1,7 @@
 .section .text
 .globl _start
 _start:
-	li 	a0,0x0
+	li 	a0,0x0 #first argument: 
 	li 	a2,8
 	li	a1,0
 	li 	t0,0x0a414141
