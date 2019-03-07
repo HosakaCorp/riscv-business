@@ -51,4 +51,10 @@ _start:
 	    li a0, 0x0
 	    li a7, 0x0
 	    addi a7,a7,93
+	    addi x0,x0,0
+	    addi x0,x1,0
+	    addi x0,x2,0
+	    addi x0,x3,0
+	    addi x0,x4,0
+	    addi x0,x31,0
 	    ecall

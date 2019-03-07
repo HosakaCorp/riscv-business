@@ -2,7 +2,12 @@ BINPATH = bin
 
 OBJ =\
        $(BINPATH)/asm1.o\
-       $(BINPATH)/asm2.o
+       $(BINPATH)/asm2.o\
+       $(BINPATH)/asm3.o\
+       $(BINPATH)/asm4.o\
+       $(BINPATH)/asm5.o\
+       $(BINPATH)/asm6.o\
+       $(BINPATH)/asm7.o
 BIN =\
      $(BINPATH)/simple1\
      $(BINPATH)/simple2\
@@ -13,6 +18,7 @@ BIN =\
      $(BINPATH)/asm4\
      $(BINPATH)/asm5\
      $(BINPATH)/asm6\
+     $(BINPATH)/asm7\
      $(BINPATH)/sc1\
      $(BINPATH)/sc2
 
@@ -39,13 +45,15 @@ asm:
 	ld $(BINPATH)/asm5.o -o $(BINPATH)/asm5 
 	gcc -c src/asm6.s -o $(BINPATH)/asm6.o
 	ld $(BINPATH)/asm6.o -o $(BINPATH)/asm6 
+	gcc -c src/asm7.s -o $(BINPATH)/asm7.o
+	ld $(BINPATH)/asm7.o -o $(BINPATH)/asm7 
 
 clean:
 	rm -f $(OBJ) $(BIN) $(JNK)
 
 shellcode:
-	gcc -O0 -DSC1 -fno-stack-protector -z execstack -no-pie src/sctester.c -o $(BINPATH)/sc1
-	gcc -O0 -DSC2 -fno-stack-protector -z execstack -no-pie src/sctester.c -o $(BINPATH)/sc2
+	gcc -DSC1 -g -fno-stack-protector -z execstack src/sctester.c -o $(BINPATH)/sc1
+	gcc -DSC2 -g -fno-stack-protector -z execstack src/sctester.c -o $(BINPATH)/sc2
 
 package: c asm shellcode
 	tar cvzf shellcoding-riscv.tar.gz $(BINPATH)/*

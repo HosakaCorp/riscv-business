@@ -9,6 +9,9 @@
 
 int main(){
   printf("Shellcode Length:  %d\n", strlen(code));
-  int (*ret)() = (int(*)())code;
-  ret();
+  //int (*ret)() = (int(*)())code;
+  //ret();
+  int (*func)();
+  func = (int (*)()) code;
+  (int)(*func)();
 }

@@ -13,4 +13,4 @@
    12008:                       ecall
 
  */
-unsigned char code[] = "\x01\x45\x81\x48\x93\x88\xd8\x05\x73";
+const unsigned char code[] = "\x01\x45\x81\x48\x93\x88\xd8\x05\x73";
