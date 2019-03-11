@@ -11,7 +11,7 @@ _start:
 	#
 	# https://github.com/riscv/riscv-isa-manual/releases/download/draft-20190309-ceb9d83/riscv-spec.pdf 
 	#
-	# There are 32 registers (and a stack pointer) and contain 4
+	# There are 32 registers (and a program counter) and contain 4
 	# core instruction formats (refered to as R, I, S, and U-type)
 	# and 2 "immediate" instruction formats (B, J-type). The types 
 	# of registers determine the format of the instructions, which

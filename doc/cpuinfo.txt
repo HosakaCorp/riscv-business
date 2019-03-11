@@ -1,0 +1,21 @@
+[root@fedora-riscv ~]# cat /proc/cpuinfo 
+processor	: 0
+hart		: 3
+isa		: rv64imafdcu
+mmu		: sv48
+
+processor	: 1
+hart		: 0
+isa		: rv64imafdcu
+mmu		: sv48
+
+processor	: 2
+hart		: 1
+isa		: rv64imafdcu
+mmu		: sv48
+
+processor	: 3
+hart		: 2
+isa		: rv64imafdcu
+mmu		: sv48
+
