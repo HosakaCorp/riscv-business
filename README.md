@@ -21,7 +21,7 @@ read in the following manner or as described in the coming blogpost:
 | files | lesson |
 | :----- | :------ |
 |`asm1.s`, `asm2.s` | Learn about the basic calling conventions, linux specifics for system calls, data access |
-| `asm3.s` | Port a program to not use the rodata section and learn about ebreak, debugging, and endianness |
+| `asm3.s` | Port a program to not use the rodata section and learn about PIC |
 | `asm4.s` | Graceful shell spawning in assembly |
 | `sc1.h`, `asm5.s` | Learn about the pitfalls of shellcode and use a simple shellcode tester to check for null chars |
 | `sc2.h`, `asm6.s` | Discover more pitfalls, solutions, and port the more advanced shell exec shellcode |

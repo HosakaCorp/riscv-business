@@ -27,6 +27,9 @@
 # > lui a1,0xa4 # 0x000a4 - Upper 20 bits
 # > addiw a1,a1,321 # 0x141 - lower 12 bits
 # 
+# This can cause issues and make things a bit hard to predict the output
+# of the assembler, so be aware when writing the assembly.
+# 
 # The second part of achieves the same thing as the first but uses the
 # assembler macro (TODO right verbiage?) for loading the upper portion
 # of the text and then the lower. This is very useful when hand writing
