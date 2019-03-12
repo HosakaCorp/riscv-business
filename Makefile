@@ -8,7 +8,8 @@ OBJ =\
        $(BINPATH)/asm5.o\
        $(BINPATH)/asm6.o\
        $(BINPATH)/asm6c.o\
-       $(BINPATH)/asm7.o
+       $(BINPATH)/asm7.o\
+       $(BINPATH)/asm8.o
 BIN =\
      $(BINPATH)/simple1\
      $(BINPATH)/simple2\
@@ -21,6 +22,7 @@ BIN =\
      $(BINPATH)/asm6\
      $(BINPATH)/asm6c\
      $(BINPATH)/asm7\
+     $(BINPATH)/asm8\
      $(BINPATH)/sc1\
      $(BINPATH)/sc2
 
@@ -49,6 +51,8 @@ asm:
 	ld $(BINPATH)/asm6.o -o $(BINPATH)/asm6 
 	gcc -march=rv64g -c src/asm7.s -o $(BINPATH)/asm7.o
 	ld $(BINPATH)/asm7.o -o $(BINPATH)/asm7 
+	gcc -march=rv64g -c src/asm8.s -o $(BINPATH)/asm8.o
+	ld $(BINPATH)/asm8.o -o $(BINPATH)/asm8 
 
 compressed:
 	gcc -march=rv64gc -c src/asm6c.s -o $(BINPATH)/asm6c.o
