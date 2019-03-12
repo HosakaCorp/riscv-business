@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+//const unsigned char code[] = "\x00";
 #ifdef SC1
 #include "sc1.h"
 #elif SC2
@@ -9,9 +10,9 @@
 
 int main(){
   printf("Shellcode Length:  %d\n", strlen(code));
-  //int (*ret)() = (int(*)())code;
-  //ret();
   int (*func)();
   func = (int (*)()) code;
   (int)(*func)();
+  printf("Did the process continue?\n");
+  return 0;
 }

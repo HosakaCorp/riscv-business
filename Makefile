@@ -33,19 +33,19 @@ c:
 	gcc -O0 -fpic src/simple3.c -o $(BINPATH)/simple3
 
 asm:
-	gcc -c src/asm1.s -o $(BINPATH)/asm1.o
+	gcc -march=rv64g -c src/asm1.s -o $(BINPATH)/asm1.o
 	ld $(BINPATH)/asm1.o -o $(BINPATH)/asm1 
-	gcc -c src/asm2.s -o $(BINPATH)/asm2.o
+	gcc -march=rv64g -c src/asm2.s -o $(BINPATH)/asm2.o
 	ld $(BINPATH)/asm2.o -o $(BINPATH)/asm2 
-	gcc -c src/asm3.s -o $(BINPATH)/asm3.o
+	gcc -march=rv64g -c src/asm3.s -o $(BINPATH)/asm3.o
 	ld $(BINPATH)/asm3.o -o $(BINPATH)/asm3 
-	gcc -c src/asm4.s -o $(BINPATH)/asm4.o
+	gcc -march=rv64g -c src/asm4.s -o $(BINPATH)/asm4.o
 	ld $(BINPATH)/asm4.o -o $(BINPATH)/asm4 
-	gcc -c src/asm5.s -o $(BINPATH)/asm5.o
+	gcc -march=rv64g -c src/asm5.s -o $(BINPATH)/asm5.o
 	ld $(BINPATH)/asm5.o -o $(BINPATH)/asm5 
-	gcc -c src/asm6.s -o $(BINPATH)/asm6.o
+	gcc -march=rv64g -c src/asm6.s -o $(BINPATH)/asm6.o
 	ld $(BINPATH)/asm6.o -o $(BINPATH)/asm6 
-	gcc -c src/asm7.s -o $(BINPATH)/asm7.o
+	gcc -march=rv64g -c src/asm7.s -o $(BINPATH)/asm7.o
 	ld $(BINPATH)/asm7.o -o $(BINPATH)/asm7 
 
 clean:
