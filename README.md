@@ -3,17 +3,18 @@ RISC-V 64LE Linux Shellcoding
 
 This repository contains all the code used to create a minimal example
 of creating shellcode for RISC-V 64LE. I attempted to do this as black-
-box as possible using only the RISC-V documentation and source from
-gcc, glibc, and the linux kernel. This was dual purpose to work on 
-furthering my understanding of hardware specifics, to learn to
-shellcode on a lesser known/new ISA, and to attempt to get some 
-payloads available even before common adoption.
+box as possible using only the RISC-V documentation and source from gcc,
+glibc, and the linux kernel. This was dual purpose to work on furthering
+my understanding of hardware specifics, to learn to shellcode on a
+lesser known/new ISA, and to attempt to get some payloads available even
+before common adoption.
 
 Repository Layout
 -----------------
-Inside of the `src/` directory there are simple C examples (`simpleN.c`),
-assembly examples (`asmN.s`), and shellcode examples (`scN.h`) that are 
-included by `sctester.c` and executed using a GCC trampoline.
+Inside of the `src/` directory there are simple C examples
+(`simpleN.c`), assembly examples (`asmN.s`), and shellcode examples
+(`scN.h`) that are included by `sctester.c` and executed using a GCC
+trampoline.
 
 The reading path is not one-to-one by the numbers, instead it should be
 read in the following manner or as described in the coming blogpost:
@@ -27,6 +28,14 @@ read in the following manner or as described in the coming blogpost:
 | `sc2.h`, `asm6.s` | Discover more pitfalls, solutions, and port the more advanced shell exec shellcode |
 | `asm7.s` | Create a reverse shell in assembly |
 | `asm8.s`, `sc3.h` | Porting the reverse shell to shellcode |
+
+Additionally, it is extremely common for most of the implimentations of
+RISC-V to contain the C compressed instruction extension. For that
+reason I decided to add a few examples:
+
+| files | lesson |
+| :----- | :------ |
+|`asm6c.s` | An example of some shellcode with compressed instructions and less xor |
 
 Usage / Building
 ----------------
