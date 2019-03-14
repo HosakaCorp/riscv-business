@@ -19,14 +19,22 @@
 # since we are looking at the 64-bit little endian version specifically
 # (RV64G). These define even more instructions for 64-bit support and is
 # important to understand that different CPU's support even more
-# extensions: * M - Integer multiplication and division * A - Atomic
-# instructions * F - Single-precision floating point * D -
-# Double-precision floating point * Q - Quad-precision floating point *
-# L - Decimal floating point * C - Compressed instructions * B - Bit
-# manipulation * J - Dynamically translated languages * T -
-# Transactional memory * P - Packed-SIMD * V - Vector operations * N -
-# User-level interrupts * "Zicsr" - Control and status register *
-# "Zefencei" - Instruction-fetch fence
+# extensions: 
+# * M - Integer multiplication and division 
+# * A - Atomic instructions 
+# * F - Single-precision floating point 
+# * D - Double-precision floating point 
+# * Q - Quad-precision floating point 
+# * L - Decimal floating point 
+# * C - Compressed instructions 
+# * B - Bit manipulation 
+# * J - Dynamically translated languages 
+# * T - Transactional memory 
+# * P - Packed-SIMD 
+# * V - Vector operations 
+# * N -  User-level interrupts 
+# * "Zicsr" - Control and status register 
+# * "Zefencei" - Instruction-fetch fence
 #
 # This means that a CPU might look like `RV64IMAFDC`, which has a nice
 # ring to it. Luckily the RISC-V team has defined the bare minimum of
