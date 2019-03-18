@@ -42,20 +42,55 @@
 # ./util/trashdis.sh 'xor a0,a0,a0'
 # 00a54533 xor a0,a0,a0
 # ./util/trashfmt.py 0x00a54533
-# 00000000101001010100010100110011
+# 00000000 10100101 01000101 00110011
+#
+# Based on what we know about the register formats XOR is a R type
+# instruction, meaning that the we know the how to make a decision on
+# which arguments are causing the null characters. I played with this by
+# doing the following:
+#
+# # ./trashfmt.py $(./trashdis.sh 'xor x0,x0,x0')
+# 00000000 00000000 01000000 00110011
+# # ./trashfmt.py $(./trashdis.sh 'xor x0,x0,x1')
+# 00000000 00010000 01000000 00110011
+# # ./trashfmt.py $(./trashdis.sh 'xor x0,x1,x0')
+# 00000000 00000000 11000000 00110011
+# # ./trashfmt.py $(./trashdis.sh 'xor x1,x0,x0')
+# 00000000 00000000 01000000 10110011
+# 
+# A quick glance indicates that we need to get a value into the most
+# significant bytes to get rid of the null. The R type instructions use
+# the second argument (`rs2`) in bits 19-24, which means that we should
+# be able to use x17 or greater in `rs2` to get 0x0001 just barely
+# getting us by. This is due to the fact that helpfully the `xN`
+# representation of the registers is also the hex value.
+#
+# If we look up the calling convention you will find that x17 is a7. 
+# This can be tested by trying to clear a7 and passing it through the 
+# trashutils:
+#
+# ./trashdis.sh 'xor a7,a7,a7'
+# 0118c8b3 xor a7,a7,a7
+# 
+# Good, we were correct. Using the same xor trick we can also set 
+# a0 (x10) by making it the destination register:
+#
+# # ./trashdis.sh 'xor a0,a7,a7'
+# 0118c533 xor a0,a7,a7
+#
+# The final disassembly looks like this:
 #
 # 10078:	0118c8b3          	xor	a7,a7,a7
 # 1007c:	0118c533          	xor	a0,a7,a7
 # 10080:	05d88893          	addi	a7,a7,93
 # 10084:	00000073          	ecall
+#
+# We can test what we have so far by compiling and running it. We will
+# revist getting rid of the ecall null's later.
 .section .text
 .globl _start
 _start:
-	#li a0, 0x0
-	#li a7, 0x0
-	#addi a7,a7,93
-	#ecall
-	xor a7,a7,a7
-	xor a0,a7,a7
-	addi a7,a7,93
+	xor a7,a7,a7 # clear a7
+	xor a0,a7,a7 # set a0 to 0
+	addi a7,a7,93 # set syscall to exit(0)
 	ecall
