@@ -1,3 +1,5 @@
+# And it begins. The core part 
+# 
 #10078:	00200513   li	a0,2 <
 #1007c:	00100593   li	a1,1 <
 #10080:	00000613   li	a2,0 <

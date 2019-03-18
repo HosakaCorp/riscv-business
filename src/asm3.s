@@ -7,15 +7,14 @@
 # itself and either statically referenced or at run time a virtual
 # address is generated.
 #
-# It may not be immediately obvious, but the behavior of having strings
-# hardcoded in object sections means that we are not able to reliably
-# reuse them in a generic manner when injecting the shellcode into a
-# vulnerable target. We now have the restriction of making all the
-# shellcode not reference static locations, we can't use labels, can
-# only use relative jumps, and are restricted from using library
-# functions. Up until this point we were functionally doing that anyway
-# based on the simple nature of our programs, but a real assembly
-# programmer would most likely be taking more advantage of this.
+# The behavior of having strings hardcoded in object sections means that we are
+# not able to reliably reuse them in a generic manner when injecting the
+# shellcode into a vulnerable target. We now have the restriction of making all
+# the shellcode not reference static locations, we can't use labels, can only
+# use relative jumps, and are restricted from using library functions. Up until
+# this point we were functionally doing that anyway based on the simple nature
+# of our programs, but a real assembly programmer would most likely be taking
+# more advantage of this.
 #
 .section .text
 .globl _start

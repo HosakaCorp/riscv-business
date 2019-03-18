@@ -29,7 +29,7 @@ BIN =\
 JNK =\
      shellcoding-riscv.tar.gz
 
-all: c asm shellcode
+all: c asm compressed shellcode
 
 c:
 	gcc -O0 -fpic src/simple1.c -o $(BINPATH)/simple1
@@ -51,12 +51,14 @@ asm:
 	ld $(BINPATH)/asm6.o -o $(BINPATH)/asm6 
 	gcc -march=rv64g -c src/asm7.s -o $(BINPATH)/asm7.o
 	ld $(BINPATH)/asm7.o -o $(BINPATH)/asm7 
-	gcc -march=rv64g -c src/asm8.s -o $(BINPATH)/asm8.o
-	ld $(BINPATH)/asm8.o -o $(BINPATH)/asm8 
+	gcc -march=rv64g -z execstack -c src/asm8.s -o $(BINPATH)/asm8.o
+	ld $(BINPATH)/asm8.o -z execstack -o $(BINPATH)/asm8 
 
 compressed:
 	gcc -march=rv64gc -c src/asm6c.s -o $(BINPATH)/asm6c.o
 	ld $(BINPATH)/asm6c.o -o $(BINPATH)/asm6c 
+	gcc -march=rv64gc -c src/asm7.s -o $(BINPATH)/asm7c.o
+	ld $(BINPATH)/asm7c.o -o $(BINPATH)/asm7c 
 
 
 clean:
