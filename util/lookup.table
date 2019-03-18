@@ -1,0 +1,15 @@
+#Instruction:OpCodeMask:ImmediateMask:Funct7Mask:Funct3Mask:rs1Mask:rs2Mask:rdMask
+R:x0,x0,x0:00000000
+I:x0,0(x0):00000FFF
+S:x0,0(x0):FFF00F00
+SB:
+U:x0,0:FFFFF000
+UJ:x0,0:FFFFF000
+CR:
+CI:
+CSS:
+CIW:
+CL:
+CS:
+CB:
+CJ:
