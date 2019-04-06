@@ -1,0 +1,10 @@
+#type:instr: opcode: immed  : func7  : func3  : rs1    : rs2    : rd     
+#R:x0,x0,x0:0000003F:00000000:FE000000:00003800:0007C000:01F80000:000007C0
+CR:
+CI:
+CSS:
+CIW:
+CL:
+CS:
+CB:
+CJ:
