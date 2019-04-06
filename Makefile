@@ -1,29 +1,75 @@
-OBJ =\
-       asm1.o\
-       asm2.o
-BIN =\
-     simple1\
-     simple2\
-     simple3\
-     asm1\
-     asm2\
-     asm3\
-     shellcode
-
 BINPATH = bin
 
-all: c asm shellcode
+OBJ =\
+       $(BINPATH)/asm1.o\
+       $(BINPATH)/asm2.o\
+       $(BINPATH)/asm3.o\
+       $(BINPATH)/asm4.o\
+       $(BINPATH)/asm5.o\
+       $(BINPATH)/asm6.o\
+       $(BINPATH)/asm6c.o\
+       $(BINPATH)/asm7.o\
+       $(BINPATH)/asm8.o
+BIN =\
+     $(BINPATH)/simple1\
+     $(BINPATH)/simple2\
+     $(BINPATH)/simple3\
+     $(BINPATH)/asm1\
+     $(BINPATH)/asm2\
+     $(BINPATH)/asm3\
+     $(BINPATH)/asm4\
+     $(BINPATH)/asm5\
+     $(BINPATH)/asm6\
+     $(BINPATH)/asm6c\
+     $(BINPATH)/asm7\
+     $(BINPATH)/asm8\
+     $(BINPATH)/sc1\
+     $(BINPATH)/sc2
+
+JNK =\
+     shellcoding-riscv.tar.gz
+
+all: c asm compressed shellcode
 
 c:
-	gcc -O0 -pic simple1.c -o $(BINPATH)/simple1
-	gcc -O0 -pic simple2.c -o $(BINPATH)/simple2
-	gcc -O0 -pic simple3.c -o $(BINPATH)/simple3
+	gcc -O0 -fpic src/simple1.c -o $(BINPATH)/simple1
+	gcc -O0 -fpic src/simple2.c -o $(BINPATH)/simple2
+	gcc -O0 -fpic src/simple3.c -o $(BINPATH)/simple3
 
 asm:
-	gcc -c asm1.s -o $(BINPATH)/asm1.s
+	gcc -march=rv64g -c src/asm1.s -o $(BINPATH)/asm1.o
 	ld $(BINPATH)/asm1.o -o $(BINPATH)/asm1 
-	gcc -c asm2.s -o $(BINPATH)/asm2.s
+	gcc -march=rv64g -c src/asm2.s -o $(BINPATH)/asm2.o
 	ld $(BINPATH)/asm2.o -o $(BINPATH)/asm2 
+	gcc -march=rv64g -c src/asm3.s -o $(BINPATH)/asm3.o
+	ld $(BINPATH)/asm3.o -o $(BINPATH)/asm3 
+	gcc -march=rv64g -c src/asm4.s -o $(BINPATH)/asm4.o
+	ld $(BINPATH)/asm4.o -o $(BINPATH)/asm4 
+	gcc -march=rv64g -c src/asm5.s -o $(BINPATH)/asm5.o
+	ld $(BINPATH)/asm5.o -o $(BINPATH)/asm5 
+	gcc -march=rv64g -c src/asm6.s -o $(BINPATH)/asm6.o
+	ld $(BINPATH)/asm6.o -o $(BINPATH)/asm6 
+	gcc -march=rv64g -c src/asm7.s -o $(BINPATH)/asm7.o
+	ld $(BINPATH)/asm7.o -o $(BINPATH)/asm7 
+	gcc -march=rv64g -z execstack -c src/asm8.s -o $(BINPATH)/asm8.o
+	ld $(BINPATH)/asm8.o -z execstack -o $(BINPATH)/asm8 
+
+compressed:
+	gcc -march=rv64gc -c src/asm6c.s -o $(BINPATH)/asm6c.o
+	ld $(BINPATH)/asm6c.o -o $(BINPATH)/asm6c 
+	gcc -march=rv64gc -c src/asm7.s -o $(BINPATH)/asm7c.o
+	ld $(BINPATH)/asm7c.o -o $(BINPATH)/asm7c 
+
 
 clean:
-	rm -f $(BINPATH)/$(OBJ) $(BINPATH)/$(BIN)
+	rm -f $(OBJ) $(BIN) $(JNK)
+
+shellcode:
+	gcc -DSC1 -g -fno-stack-protector -z execstack src/sctester.c -o $(BINPATH)/sc1
+	gcc -DSC2 -g -fno-stack-protector -z execstack src/sctester.c -o $(BINPATH)/sc2
+
+package: c asm shellcode
+	tar cvzf riscv-$(shell date +%s).tar.gz $(BINPATH)/*
+
+.PHONY:
+	all clean asm shellcode package c

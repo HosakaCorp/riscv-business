@@ -5,3 +5,6 @@ asm1
 asm2
 asm3
 shellcode
+bin/
+.*.sw*
+*.tar.gz
