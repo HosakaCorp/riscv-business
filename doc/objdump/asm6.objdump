@@ -1,0 +1,23 @@
+
+asm6:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000010078 <_start>:
+   10078:	696238b7          	lui	a7,0x69623
+   1007c:	f2f8889b          	addiw	a7,a7,-209
+   10080:	ff810113          	addi	sp,sp,-8
+   10084:	01113023          	sd	a7,0(sp)
+   10088:	687338b7          	lui	a7,0x68733
+   1008c:	f6e8889b          	addiw	a7,a7,-146
+   10090:	01113223          	sd	a7,4(sp)
+   10094:	0118c8b3          	xor	a7,a7,a7
+   10098:	01110893          	addi	a7,sp,17
+   1009c:	0118c533          	xor	a0,a7,a7
+   100a0:	fef88513          	addi	a0,a7,-17 # 68732fef <__global_pointer$+0x68721737>
+   100a4:	0118c633          	xor	a2,a7,a7
+   100a8:	0118c5b3          	xor	a1,a7,a7
+   100ac:	0118c8b3          	xor	a7,a7,a7
+   100b0:	0dd88893          	addi	a7,a7,221
+   100b4:	00000073          	ecall

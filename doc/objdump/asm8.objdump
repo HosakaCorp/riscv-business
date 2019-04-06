@@ -1,0 +1,90 @@
+
+asm8:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+00000000000100b0 <_start>:
+   100b0:	0118c533          	xor	a0,a7,a7
+   100b4:	0118c5b3          	xor	a1,a7,a7
+   100b8:	0118c633          	xor	a2,a7,a7
+   100bc:	0118c8b3          	xor	a7,a7,a7
+   100c0:	0e288513          	addi	a0,a7,226
+   100c4:	f2050513          	addi	a0,a0,-224
+   100c8:	0e188593          	addi	a1,a7,225
+   100cc:	f2058593          	addi	a1,a1,-224
+   100d0:	0ee88893          	addi	a7,a7,238
+   100d4:	fd888893          	addi	a7,a7,-40
+   100d8:	ffc10113          	addi	sp,sp,-4
+   100dc:	0118c6b3          	xor	a3,a7,a7
+   100e0:	0118c833          	xor	a6,a7,a7
+   100e4:	07380813          	addi	a6,a6,115
+   100e8:	01013023          	sd	a6,0(sp)
+   100ec:	7e768693          	addi	a3,a3,2023
+   100f0:	0118c733          	xor	a4,a7,a7
+   100f4:	01070713          	addi	a4,a4,16
+   100f8:	02e686b3          	mul	a3,a3,a4
+   100fc:	0118c833          	xor	a6,a7,a7
+   10100:	1f768813          	addi	a6,a3,503
+   10104:	01013223          	sd	a6,4(sp)
+   10108:	0118c6b3          	xor	a3,a7,a7
+   1010c:	fef10693          	addi	a3,sp,-17
+   10110:	011680e7          	jalr	17(a3)
+   10114:	ff010113          	addi	sp,sp,-16
+   10118:	0118c8b3          	xor	a7,a7,a7
+   1011c:	0e288893          	addi	a7,a7,226
+   10120:	f2088893          	addi	a7,a7,-224
+   10124:	01113023          	sd	a7,0(sp)
+   10128:	0118c8b3          	xor	a7,a7,a7
+   1012c:	52f88893          	addi	a7,a7,1327
+   10130:	0118c2b3          	xor	t0,a7,a7
+   10134:	0eb28293          	addi	t0,t0,235
+   10138:	f2028293          	addi	t0,t0,-224
+   1013c:	025888b3          	mul	a7,a7,t0
+   10140:	01113123          	sd	a7,2(sp)
+   10144:	010108b7          	lui	a7,0x1010
+   10148:	17f8889b          	addiw	a7,a7,383
+   1014c:	01113223          	sd	a7,4(sp)
+   10150:	0118c5b3          	xor	a1,a7,a7
+   10154:	01014593          	xori	a1,sp,16
+   10158:	01058593          	addi	a1,a1,16
+   1015c:	0f060613          	addi	a2,a2,240
+   10160:	f2060613          	addi	a2,a2,-224
+   10164:	0118c8b3          	xor	a7,a7,a7
+   10168:	0ee88893          	addi	a7,a7,238 # 10100ee <__global_pointer$+0xffe6f2>
+   1016c:	fdd88893          	addi	a7,a7,-35
+   10170:	0118c2b3          	xor	t0,a7,a7
+   10174:	53950293          	addi	t0,a0,1337
+   10178:	011680e7          	jalr	17(a3)
+   1017c:	0118c533          	xor	a0,a7,a7
+   10180:	ac728513          	addi	a0,t0,-1337
+   10184:	0118c5b3          	xor	a1,a7,a7
+   10188:	0118c633          	xor	a2,a7,a7
+   1018c:	0118c8b3          	xor	a7,a7,a7
+   10190:	0ee88893          	addi	a7,a7,238
+   10194:	f2a88893          	addi	a7,a7,-214
+   10198:	011680e7          	jalr	17(a3)
+   1019c:	0118c533          	xor	a0,a7,a7
+   101a0:	ac728513          	addi	a0,t0,-1337
+   101a4:	fe988593          	addi	a1,a7,-23
+   101a8:	011680e7          	jalr	17(a3)
+   101ac:	0118c533          	xor	a0,a7,a7
+   101b0:	ac728513          	addi	a0,t0,-1337
+   101b4:	fea88593          	addi	a1,a7,-22
+   101b8:	011680e7          	jalr	17(a3)
+   101bc:	696238b7          	lui	a7,0x69623
+   101c0:	f2f8889b          	addiw	a7,a7,-209
+   101c4:	ff810113          	addi	sp,sp,-8
+   101c8:	01113023          	sd	a7,0(sp)
+   101cc:	687338b7          	lui	a7,0x68733
+   101d0:	f6e8889b          	addiw	a7,a7,-146
+   101d4:	01113223          	sd	a7,4(sp)
+   101d8:	0118c8b3          	xor	a7,a7,a7
+   101dc:	01110893          	addi	a7,sp,17
+   101e0:	0118c533          	xor	a0,a7,a7
+   101e4:	fef88513          	addi	a0,a7,-17 # 68732fef <__global_pointer$+0x687215f3>
+   101e8:	0118c633          	xor	a2,a7,a7
+   101ec:	0118c5b3          	xor	a1,a7,a7
+   101f0:	0118c8b3          	xor	a7,a7,a7
+   101f4:	0dd88893          	addi	a7,a7,221
+   101f8:	011680e7          	jalr	17(a3)

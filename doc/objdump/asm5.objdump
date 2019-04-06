@@ -1,0 +1,11 @@
+
+asm5:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000010078 <_start>:
+   10078:	0118c8b3          	xor	a7,a7,a7
+   1007c:	0118c533          	xor	a0,a7,a7
+   10080:	05d88893          	addi	a7,a7,93
+   10084:	00000073          	ecall

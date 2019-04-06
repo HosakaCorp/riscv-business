@@ -1,0 +1,21 @@
+
+asm3:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000010078 <_start>:
+   10078:	00000513          	li	a0,0
+   1007c:	00800613          	li	a2,8
+   10080:	0a4142b7          	lui	t0,0xa414
+   10084:	1412829b          	addiw	t0,t0,321
+   10088:	42424337          	lui	t1,0x42424
+   1008c:	2423031b          	addiw	t1,t1,578
+   10090:	ff810113          	addi	sp,sp,-8
+   10094:	00613023          	sd	t1,0(sp)
+   10098:	00513223          	sd	t0,4(sp)
+   1009c:	00010593          	mv	a1,sp
+   100a0:	04000893          	li	a7,64
+   100a4:	00000073          	ecall
+   100a8:	05d00893          	li	a7,93
+   100ac:	00000073          	ecall

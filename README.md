@@ -1,8 +1,8 @@
-RISC-V 64LE Linux Shellcoding
-=============================
+RISC-V RV64G Linux Shellcoding
+==============================
 
 This repository contains all the code used to create a minimal example
-of creating shellcode for RISC-V 64LE. I attempted to do this as black-
+of creating shellcode for RISC-V RV64G. I attempted to do this as black-
 box as possible using only the RISC-V documentation and source from gcc,
 glibc, and the linux kernel. This was dual purpose to work on furthering
 my understanding of hardware specifics, to learn to shellcode on a

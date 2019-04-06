@@ -69,7 +69,7 @@ shellcode:
 	gcc -DSC2 -g -fno-stack-protector -z execstack src/sctester.c -o $(BINPATH)/sc2
 
 package: c asm shellcode
-	tar cvzf shellcoding-riscv.tar.gz $(BINPATH)/*
+	tar cvzf riscv-$(shell date +%s).tar.gz $(BINPATH)/*
 
 .PHONY:
 	all clean asm shellcode package c

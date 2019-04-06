@@ -1,0 +1,38 @@
+
+asm2:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000000010078 <_start>:
+   10078:	00000513          	li	a0,0
+   1007c:	ffc10113          	addi	sp,sp,-4
+   10080:	000a45b7          	lui	a1,0xa4
+   10084:	1415859b          	addiw	a1,a1,321
+   10088:	00b13223          	sd	a1,4(sp)
+   1008c:	00000593          	li	a1,0
+   10090:	00410593          	addi	a1,sp,4
+   10094:	00400613          	li	a2,4
+   10098:	04000893          	li	a7,64
+   1009c:	00000073          	ecall
+   100a0:	00000513          	li	a0,0
+   100a4:	ff010113          	addi	sp,sp,-16
+   100a8:	000105b7          	lui	a1,0x10
+   100ac:	0c458593          	addi	a1,a1,196 # 100c4 <msg>
+   100b0:	01100613          	li	a2,17
+   100b4:	00000073          	ecall
+   100b8:	00000513          	li	a0,0
+   100bc:	05d00893          	li	a7,93
+   100c0:	00000073          	ecall
+
+Disassembly of section .rodata:
+
+00000000000100c4 <msg>:
+   100c4:	6548                	ld	a0,136(a0)
+   100c6:	6c6c                	ld	a1,216(s0)
+   100c8:	574d206f          	j	e263c <__global_pointer$+0xd0d67>
+   100cc:	2052                	fld	ft0,272(sp)
+   100ce:	614c                	ld	a1,128(a0)
+   100d0:	7362                	ld	t1,56(sp)
+   100d2:	000a                	c.slli	zero,0x2
+	...
