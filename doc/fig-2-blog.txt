@@ -1,0 +1,6 @@
+[root@fedora-riscv riscv]# ./util/trashfmt.py $(./util/trashdis.sh "ADD a0,a7,a6")
+00000001 00001000 10000101 00110011
+[root@fedora-riscv riscv]# ./util/trashdis.sh "ADD a0,a7,a6" && ./util/trashfmt.py $(./util/trashdis.sh "ADD a0,a7,a6")
+01088533 add a0,a7,a6
+00000001 00001000 10000101 00110011
+
